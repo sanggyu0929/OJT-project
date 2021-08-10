@@ -3,7 +3,7 @@
 @section('title')
 
 @section('content')
-    <h2>hello,{{session('email')}}</h2>
+    <h2>메인 페이지</h2>
     @if ($LoggedUserInfo)
         {{ $LoggedUserInfo['email'] }}
         {{ $LoggedUserInfo['name'] }}

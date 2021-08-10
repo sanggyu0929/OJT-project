@@ -17,18 +17,15 @@ use Illuminate\Http\Response;
 class LoginController extends Controller
 {
     public function index(Request $request) {
+        // 세션 확인
         if($request->session()->has('LoggedUser')) {
             $data = ['LoggedUserInfo'=>MMonDB::where('email','=',session('LoggedUser'))->first()];
             return redirect()->route('home')->with($data);
         } else {
-            Session::put('activeNav', 'login');
-
             $data = [
                 'title' => 'Login',
                 'LoggedUserInfo'=>MMonDB::where('email','=',session('LoggedUser'))->first(),
             ];
-
-            $email=$request->cookie('email');
             
             return view('login', $data);
         } 
@@ -42,16 +39,19 @@ class LoginController extends Controller
         //     'pw'=>'required',
         // ])->validate();
         
-        $auth = false;
-        $errors = [];
+        // $auth = false;
+        // $errors = [];
     
         $inputs = $request->all();
+
+        //유효성 검사
         $validator = Validator::make($inputs, [
             'email'=>'required|email',
             'pw'=>'required',
         ]);
         //->validateWithBag('post');
     
+        //유효성 검사 실패 시 에러 메세지
         if ($validator->fails()) {
             return response()->json([
                 'auth' => false,
@@ -59,12 +59,13 @@ class LoginController extends Controller
             ]);
         }
         
-        $json = response()->json(["email"=>"이메일이 존재하지 않습니다."]);
-        $userdata = [
-            'email' => $request->input('email'),
-            'pw' => $request->input('pw'),
-        ];
+        // $json = response()->json(["email"=>"이메일이 존재하지 않습니다."]);
+        // $userdata = [
+        //     'email' => $request->input('email'),
+        //     'pw' => $request->input('pw'),
+        // ];
 
+        // 아이디 비번 검사
         $table = MMonDB::where('email', $request->email)->first();
         // $table = MMonDB::where('email', $request->email)->first();
         if(!$table) {
@@ -118,12 +119,12 @@ class LoginController extends Controller
     
         // }
     
-        if ($request->ajax()) {          
-            return response()->json([
-                'auth' => $auth,
-                'errors' => $errors
-            ]);
-        }
+        // if ($request->ajax()) {          
+        //     return response()->json([
+        //         'auth' => $auth,
+        //         'errors' => $errors
+        //     ]);
+        // }
     
         return redirect()->route('login');
     } 

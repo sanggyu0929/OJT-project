@@ -25,9 +25,11 @@ use App\Http\Controllers\SignUpController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us');
 Route::get('about-us', [AboutUsController::class, 'index'])->name('about-us');
+Route::get('category', [HomeController::class, 'goCategory'])->name('category');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('sign-up', [SignUpController::class, 'index'])->name('sign-up');
 Route::get('logout', [HomeController::class, 'logout'])->name('logout');
+
 Route::post('login/post', [LoginController::class, 'loginChk'])->name('login-chk');
 Route::post('sign-up/post', [SignUpController::class, 'signUp'])->name('sign-up-chk');
 Route::post('sign-up/emailChk', [SignUpController::class, 'emailChk'])->name('email-chk');

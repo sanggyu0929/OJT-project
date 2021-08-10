@@ -69,6 +69,7 @@
         let metaName = 'csrf-token';
         let emailChk = document.querySelectorAll('.error-text.email');
         console.log(emailChk);
+        //이메일 폼 입력 시 이벤트
         inputEmail.onkeyup = function() {
             let email = document.getElementById('sign-email').value;
             console.log('push key');
@@ -109,6 +110,7 @@
             },1000);
             
         }
+        // 회원가입 버튼 클릭 이벤트
         signUpClick.onclick = function(e){
             e.preventDefault();
             let email = document.getElementById('sign-email').value;
@@ -147,6 +149,7 @@
                 // fetch('/sign-up/post',opts).then(function(response) {
                 //     console.log(response.json());
                 // });
+                // Ajax 요청
                 fetch("/sign-up/post", {
                     method: 'POST',
                     headers: {

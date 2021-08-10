@@ -57,16 +57,13 @@
         let textDanger = document.getElementsByClassName('text-danger');
         let emailValue;
 
+        // 쿠키에 있는 데이터 값 넣기
         inputEmail.value = getCookie('email');
-
-        inputEmail.onkeyup = function() {
-            emailValue = inputEmail.value;
-            console.log(emailValue);
-        }
 
         var decodedCookie1 = decodeURIComponent(document.cookie).split(';');
         
         console.log(decodedCookie1);
+        // 쿠키 가져오기
         function getCookie(cname) {
 
         var name = cname + "=";
@@ -103,8 +100,6 @@
 
         //쿠키 체크
         console.log(formChk);
-
-        //이메일 기억하기
       
 
         loginClick.onclick = function(e) {
@@ -117,20 +112,21 @@
 
             // let rememberEmailChk = rememberEmail.getAttribute("checked");
             // console.log(rememberEmailChk);
+            // 이메일 저장하기 체크
             if (rememberEmail.checked === true) {
                 console.log('checked');
                 console.log(emailValue);
+                emailValue = inputEmail.value;
                 setCookie('email',emailValue,{secure: true, 'max-age': 3600});
             } else {
                 console.log('false');
             }
 
             
-
+            // 쿠키 세팅
             function setCookie(name, value, options = {}) {
                 options = {
                     path: '/',
-                    // 필요한 경우, 옵션 기본값을 설정할 수도 있습니다.
                     ...options
                 };
 
@@ -151,7 +147,7 @@
             }
 
 
-
+            // meta에 있는 csrf토큰 값 가져오기
             function getToken(){
                 const metas = document.getElementsByTagName('meta');
             
@@ -180,7 +176,7 @@
             // });
 
             //'Content-Type': 'application/json',
-
+            // Ajax 요청
             fetch("/login/post", {
                 method: 'POST',
                 headers: {
@@ -195,6 +191,7 @@
                 let res = JSON.stringify(response);
                 console.log(res);
                 console.log(response);
+                // 에러 출력 (@error를 사용하여 blade에서 에러 출력 예정)
                 if (!(response.errors)) {             
                     if (res === '["success"]') {
                         location.href = '/';

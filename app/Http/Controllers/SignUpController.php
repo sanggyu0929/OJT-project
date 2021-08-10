@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Validator;
 class SignUpController extends Controller
 {
     public function index() {
-        Session::put('activeNav', 'sign-up');
-
         $data = [
             'title' => 'Sign-up',
         ];
@@ -37,6 +35,7 @@ class SignUpController extends Controller
         //     return redirect()->back()->withErrors($validator->errors());
         // }
 
+        //유효성 검사
         $validator = Validator::make($request->all(), [
             'email'=>'required|email|unique:App\Models\MMonDB',
             'pw'=>'required',
@@ -58,7 +57,7 @@ class SignUpController extends Controller
         if($table->save()) {
             return response()->json(['success']);
         }
-        return response()->json($request->all());
+    
         return response()->json(['success'=>'회원가입 완료!']);
         
     }

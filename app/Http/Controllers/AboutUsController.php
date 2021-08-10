@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Session;
 class AboutUsController extends Controller
 {
     public function index() {
-        Session::put('activeNav', 'about-us');
-
         $data = [
             'title' => 'About Us',
             'content' => 'About Us페이지 입니다.',

@@ -1,6 +1,6 @@
 <header>
     <ul class="menu-box">
-        <li><a href="/">카테고리 관리</a></li>
+        <li><a href="{{ route('category') }}">카테고리 관리</a></li>
         <li><a href="/about-us">브랜드 관리</a></li>
         <li><a href="/contact-us">상품 관리</a></li>       
     </ul>

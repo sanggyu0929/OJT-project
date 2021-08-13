@@ -3,62 +3,64 @@
 @section('title', $title)
 
 @section('content')
-    Sign up Page
-    <form action="" method="POST">
-        @csrf
-        <h6 class="sign-form-text">이메일</h6>
-        <label>
-            <div class="form-text">
-                <input type="text" 
-                    id="sign-email" 
-                    name="sign-email"
-                    placeholder="이메일을 입력하세요"/>
+    <section class="sign-wrap">
+        Sign up Page
+        <form action="" method="POST">
+            @csrf
+            <h6 class="sign-form-text">이메일</h6>
+            <label>
+                <div class="form-text">
+                    <input type="text" 
+                        id="sign-email" 
+                        name="sign-email"
+                        placeholder="이메일을 입력하세요"/>
+                </div>
+                <span class="error-text email">이메일 형식이 올바리지 않습니다.</span>
+                <span class="error-text email">중복된 이메일 입니다.</span>
+                <span class="text-danger">@error('email'){{ $message }} @enderror</span>
+            </label>
+            <h6 class="sign-form-text">이름</h6>
+            <label>
+                <div class="form-text">
+                    <input type="text"
+                        id="sign-name"
+                        name="sign-name"
+                        placeholder="이름을 입력하세요"/>
+                </div>
+                <span class="error-text">이름을 입력해주세요.</span>
+                @if ($errors->has("name"))
+                        <span class="text-danger">{{ $errors->first("name") }}</span>
+                @endif
+            </label>
+            <h6 class="sign-form-text">비밀번호</h6>
+            <label>
+                <div class="form-text">
+                    <input type="password"
+                        id="sign-pw"
+                        name="sign-pw"
+                        placeholder="비밀번호를 입력하세요"/>
+                </div>
+                <span class="error-text">비밀번호를 입력해주세요.</span>
+                @if ($errors->has("pw"))
+                        <span class="text-danger">{{ $errors->first("pw") }}</span>
+                @endif
+            </label>
+            <h6 class="sign-form-text">비밀번호 확인</h6>
+            <label>
+                <div class="form-text">
+                    <input type="password"
+                        id="sign-pw-chk"
+                        name="sign-pw-chk"
+                        placeholder="비밀번호를 입력하세요"/>
+                </div>
+                <span id="nomatch" class="error-text">비밀번호가 다릅니다.</span>
+            </label>
+            <div class="form-bottom">
+                <button type="button" id="sign-btn">회원가입</button>
+                <a href="{{ route('login') }}">로그인 하기</a>
             </div>
-            <span class="error-text email">이메일 형식이 올바리지 않습니다.</span>
-            <span class="error-text email">중복된 이메일 입니다.</span>
-            <span class="text-danger">@error('email'){{ $message }} @enderror</span>
-        </label>
-        <h6 class="sign-form-text">이름</h6>
-        <label>
-            <div class="form-text">
-                <input type="text"
-                    id="sign-name"
-                    name="sign-name"
-                    placeholder="이름을 입력하세요"/>
-            </div>
-            <span class="error-text">이름을 입력해주세요.</span>
-            @if ($errors->has("name"))
-                    <span class="text-danger">{{ $errors->first("name") }}</span>
-            @endif
-        </label>
-        <h6 class="sign-form-text">비밀번호</h6>
-        <label>
-            <div class="form-text">
-                <input type="password"
-                    id="sign-pw"
-                    name="sign-pw"
-                    placeholder="비밀번호를 입력하세요"/>
-            </div>
-            <span class="error-text">비밀번호를 입력해주세요.</span>
-            @if ($errors->has("pw"))
-                    <span class="text-danger">{{ $errors->first("pw") }}</span>
-            @endif
-        </label>
-        <h6 class="sign-form-text">비밀번호 확인</h6>
-        <label>
-            <div class="form-text">
-                <input type="password"
-                    id="sign-pw-chk"
-                    name="sign-pw-chk"
-                    placeholder="비밀번호를 입력하세요"/>
-            </div>
-            <span id="nomatch" class="error-text">비밀번호가 다릅니다.</span>
-        </label>
-        <div class="form-bottom">
-            <button type="button" id="sign-btn">회원가입</button>
-            <a href="{{ route('login') }}">로그인 하기</a>
-        </div>
-    </form>
+        </form>
+    </section>
 @endsection
 
 @push('scripts')

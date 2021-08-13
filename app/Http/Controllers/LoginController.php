@@ -22,10 +22,7 @@ class LoginController extends Controller
             $data = ['LoggedUserInfo'=>MMonDB::where('email','=',session('LoggedUser'))->first()];
             return redirect()->route('home')->with($data);
         } else {
-            $data = [
-                'title' => 'Login',
-                'LoggedUserInfo'=>MMonDB::where('email','=',session('LoggedUser'))->first(),
-            ];
+            $data = ['title' => 'Login'];
             
             return view('login', $data);
         } 

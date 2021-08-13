@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->integer('Cidx')->autoIncrement();
             $table->string('name',45);
-            $table->integer('used');
+            $table->string('used');
         });
     }
 

@@ -9,9 +9,9 @@
     </head>
     <body>
         @include('partials.header')
-        <div class="container">
+        <main>
             @yield('content')
-        </div>
+        </main>
         {{-- <script src="{{ asset('js/index.js') }}"></script> --}}
         @stack('scripts')
     </body>

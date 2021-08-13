@@ -191,7 +191,6 @@
                 let res = JSON.stringify(response);
                 console.log(res);
                 console.log(response);
-                // 에러 출력 (@error를 사용하여 blade에서 에러 출력 예정)
                 if (!(response.errors)) {             
                     if (res === '["success"]') {
                         location.href = '/';

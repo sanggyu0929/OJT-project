@@ -21,7 +21,7 @@
                 <li>{{ $i }}</li>
                 <li>{{ $list['name'] }}</li>
                 <li>{{ $list['used'] }}</li>
-                <a href=""><li>수정</li></a>
+                <a href="/category/Edit/{{ $list->Cidx }}"><li>수정</li></a>
                 @php
                     $i--;
                 @endphp

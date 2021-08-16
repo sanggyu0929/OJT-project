@@ -12,12 +12,11 @@ class categories extends Model
     protected $fillable = ["name", "used"];
     public $timestamps = false;
 
-    // public function setUsedAttribute($value) {
-    //     if($this->attributes['used'] == '1') {
-    //         $this->attributes['used'] = '사용';
-    //     } else {
-    //         $this->attributes['used'] = '미사용';
-    //     }
-        
-    // }
+    public function getUsedAttribute($value) {
+        if ($value === '1') {
+            return $value = '사용';
+        } else {
+            return $value = '미사용';
+        }
+    }
 }

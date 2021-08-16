@@ -27,21 +27,45 @@ class HomeController extends Controller
             ];
             return view('category', $data);
         } else {
-            $data = ['title' => 'Category'];
             return redirect('login');
         }
     }
 
-    function goCaRegister() {
-        $data = [
-            'title' => '카테고리 등록',
-        ];
-        return view('caRegister', $data);
+    function goCaRegister(Request $request) {
+        if($request->session()->has('LoggedUser')) {
+            $data = [
+                'title' => '카테고리 등록',
+                'LoggedUserInfo'=>MMonDB::where('email','=',session('LoggedUser'))->first(),
+            ];
+            return view('caRegister', $data);
+        } else {
+            return redirect('login');
+        }
+    }
+
+    function goCaEdit(Request $request, $Cidx) {
+        if($request->session()->has('LoggedUser')) {
+            $table = categories::where('Cidx', $Cidx)->first();
+            $data = [
+                'title' => '카테고리 수정',
+                'LoggedUserInfo'=>MMonDB::where('email','=',session('LoggedUser'))->first(),
+                'selectedList' => $table,
+            ];
+            return view('caEdit', $data);
+        } else {
+            return redirect('login');
+        }
+        // $table = categories::where('Cidx', $Cidx)->first();
+        // $data = [
+        //     'title' => '카테고리 수정',
+        //     'selectedList' => $table,
+        // ];
+        // return view('caEdit', $data);
     }
 
     function caRegister(Request $request) {
         $table = categories::where('name', $request->caName)->first();
-        if($table) {
+        if ($table) {
             return response()->json(['exists']);
         } else {
             $inputs = $request->all();
@@ -54,6 +78,23 @@ class HomeController extends Controller
             if($table->save()) {
                 return response()->json(['success']);
             }
+        }
+    }
+
+    function caEdit(Request $request) {
+        $table = categories::where('name', $request->caName)->first();
+        if ($table) {
+            return response()->json(['exists']);
+        } else {
+            $inputs = $request->all();
+
+            $table = categories::where('Cidx', $request->Cidx)
+                               ->update([
+                                   'name' => $request->caName,
+                                   'used' => $request->useChk,
+                                ]);
+           
+            return response()->json(['success']);
         }
     }
 

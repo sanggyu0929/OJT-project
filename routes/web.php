@@ -24,7 +24,9 @@ use App\Http\Controllers\SignUpController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us');
-Route::get('about-us', [AboutUsController::class, 'index'])->name('about-us');
+Route::get('brand', [HomeController::class, 'goBrand'])->name('brand');
+Route::get('brand/Register', [HomeController::class, 'goBrandRegister'])->name('brand.register');
+Route::get('brand/Edit/{Bidx}', [HomeController::class, 'goBrandEdit'])->name('brand.edit');
 Route::get('category', [HomeController::class, 'goCategory'])->name('category');
 Route::get('category/Register', [HomeController::class, 'goCaRegister'])->name('category.register');
 Route::get('category/Edit/{Cidx}', [HomeController::class, 'goCaEdit'])->name('category.Edit');
@@ -37,6 +39,9 @@ Route::post('sign-up/post', [SignUpController::class, 'signUp'])->name('sign-up-
 Route::post('sign-up/emailChk', [SignUpController::class, 'emailChk'])->name('email-chk');
 Route::post('category/Register', [HomeController::class, 'caRegister'])->name('category.post');
 Route::post('category/Edit', [HomeController::class, 'caEdit']);
+Route::post('brand/Register', [HomeController::class, 'brandRegister']);
+Route::post('brand/Edit', [HomeController::class, 'brandEdit']);
+Route::post('brand/Delete', [HomeController::class, 'brandDelete']);
 
 
 

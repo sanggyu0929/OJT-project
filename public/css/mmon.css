@@ -151,13 +151,15 @@ main {
     display: none;
 }
 
-/*카테고리 페이지*/
-.category-wrap {
+/*카테고리 페이지, 브랜드 페이지*/
+.category-wrap,
+.brand-wrap {
     width: 100%;
     height: 100%;
 }
 
-.category-box {
+.category-box,
+.brand-box {
     min-width: 460px;
     max-width: 700px;
     height: 500px;
@@ -167,7 +169,8 @@ main {
     grid-template-rows: 1fr 10fr;
 }
 
-.category-box-top {
+.category-box-top,
+.brand-box-top {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     text-align: center;
@@ -175,7 +178,8 @@ main {
     padding: 10px 0;
 }
 
-.category-list {
+.category-list,
+.brand-list {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     text-align: center;
@@ -185,3 +189,12 @@ main {
     align-content: start;
 }
 
+.manage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.w-5 {
+    width: 100px;
+    display: inline;
+}

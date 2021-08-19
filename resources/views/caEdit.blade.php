@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content')
-    <section class="caRegister-wrap">
+    <section class="category-edit-wrap">
         <h2>카테고리 수정</h2>
         <span>카테고리</span> 
         <input type="text" value="{{ $selectedList->Cidx }}" readonly id="ca-idx">
@@ -41,11 +41,11 @@
         let token;
         let metaName = 'csrf-token';
         let useChk;
+        let caIdx = document.getElementById('ca-idx').value;
+        caIdx = parseInt(caIdx);
+        console.log(caIdx);
        
         EditBtn.onclick = function() {
-            let caIdx = document.getElementById('ca-idx').value;
-            caIdx = parseInt(caIdx);
-            console.log(caIdx);
             let caName = document.getElementById('ca-name').value;
             let useBtns = document.getElementsByClassName('use-btns');
             console.log(caName);
@@ -56,7 +56,7 @@
                 useChk = '0';
                 console.log(useChk);
             }
-            var blank_pattern = /^\s+|\s+$/g;
+            let blank_pattern = /^\s+|\s+$/g;
             if( caName.replace( blank_pattern, '' ) == "" ){
                 alert(' 공백만 입력되었습니다 ');
             } else {

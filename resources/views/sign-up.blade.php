@@ -71,10 +71,9 @@
         let metaName = 'csrf-token';
         let emailChk = document.querySelectorAll('.error-text.email');
         console.log(emailChk);
-        //이메일 폼 입력 시 이벤트
-        inputEmail.onkeyup = function() {
+        //이메일 폼 중복 검사
+        inputEmail.onblur = function() {
             let email = document.getElementById('sign-email').value;
-            console.log('push key');
             function getToken(){
                 const metas = document.getElementsByTagName('meta');
             

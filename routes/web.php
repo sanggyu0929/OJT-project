@@ -23,7 +23,8 @@ use App\Http\Controllers\SignUpController;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us');
+Route::get('product', [HomeController::class, 'goProduct'])->name('product');
+Route::get('product/Register', [HomeController::class, 'goProductRegister'])->name('product.register');
 Route::get('brand', [HomeController::class, 'goBrand'])->name('brand');
 Route::get('brand/Register', [HomeController::class, 'goBrandRegister'])->name('brand.register');
 Route::get('brand/Edit/{Bidx}', [HomeController::class, 'goBrandEdit'])->name('brand.edit');
@@ -42,6 +43,7 @@ Route::post('category/Edit', [HomeController::class, 'caEdit']);
 Route::post('brand/Register', [HomeController::class, 'brandRegister']);
 Route::post('brand/Edit', [HomeController::class, 'brandEdit']);
 Route::post('brand/Delete', [HomeController::class, 'brandDelete']);
+Route::post('product/Register', [HomeController::class, 'productRegister'])->name('product.register');
 
 
 

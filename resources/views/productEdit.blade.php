@@ -113,8 +113,8 @@
         let categoriesBox = document.getElementById('categories-box');
         let selectedCategory = [];
         let delBtn = document.getElementsByClassName('del-btn');
-        categoriesBox.children
 
+        // 선택된 카테고리
         for(let i = 0; i < categoriesBox.children.length; i++) {
             selectedCategory.push(categoriesBox.children[i].children[0].innerText);
         }
@@ -212,19 +212,6 @@
                 }
 
                 getToken();
-                console.log(file);
-                // console.log(link);
-                console.log(img);
-                // axios({
-                // method: 'POST',
-                // url: '/product/Edit',
-                // data: {
-                //     productImg : file
-                // }
-                // })
-                // .then(function (response) {
-                //     console.log(response);
-                // });
 
                 let formData = new FormData();
                 formData.append('productIdx', productIdx);
@@ -245,22 +232,6 @@
                             location.href = '/product';
                         } 
                     }).catch(err => console.log(err));
-
-                // fetch("/product/Edit", {
-                // method: 'POST',
-                // headers: {
-                //     'X-CSRF-TOKEN': token,
-                //     'Content-Type': 'application/json',
-                //     'Accept' : 'application/json',
-                // },
-                //     body: JSON.stringify({'productName':productName,'categories' : categories,'brand' : brand,'state' : 0,'price' : price,'sales' : sales,'productImg' : file})
-                // }).then(
-                //     (res) => res.json()
-                // ).then(function(response) {
-                //     let res = JSON.stringify(response);
-                //     console.log(res);
-                //     console.log(response);
-                // }).catch(err => console.log(err));
             }
         }
 

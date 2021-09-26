@@ -20,20 +20,6 @@ class SignUpController extends Controller
     }
 
     public function signUp(Request $request) {
-        // $request->validate([
-        //     'email'=>'required|email|unique:MMonDB',
-        //     'pw'=>'required',
-        //     'name'=>'required'
-        // ]);
-        // $validator = Validator::make($request->all(), [
-        //     'email'=>'required|email|unique:MMonDB',
-        //     'pw'=>'required',
-        //     'name'=>'required'
-        // ])->validate();
-        // if ($validator->fails())
-        // {
-        //     return redirect()->back()->withErrors($validator->errors());
-        // }
 
         //유효성 검사
         $validator = Validator::make($request->all(), [

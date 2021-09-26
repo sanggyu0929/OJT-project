@@ -26,10 +26,6 @@
                     $i--;
                 @endphp
                 @endforeach
-                {{-- <li>3</li>
-                <li>여성 원피스</li>
-                <li>사용</li>
-                <a href=""><li>수정</li></a> --}}
             </ul>
         </div>
     

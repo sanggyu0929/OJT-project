@@ -112,15 +112,6 @@
                             location.href = '/product';
                         }
                     }).catch(err => console.log(err));
-
-                    // axios.post('/product/Edit', formData)
-                    //     .then(function(response) {
-                    //         let res = JSON.stringify(response.data);
-                    //         console.log(res);
-                    //         if (res === '["success"]') {
-                    //             location.href = '/product';
-                    //         }
-                    //     }).catch(err => console.log(err));
                 }
             }
         }

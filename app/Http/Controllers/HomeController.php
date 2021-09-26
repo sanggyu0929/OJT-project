@@ -66,12 +66,6 @@ class HomeController extends Controller
         } else {
             return redirect('login');
         }
-        // $table = categories::where('Cidx', $Cidx)->first();
-        // $data = [
-        //     'title' => '카테고리 수정',
-        //     'selectedList' => $table,
-        // ];
-        // return view('caEdit', $data);
     }
 
     // post 카테고리 등록
@@ -97,7 +91,6 @@ class HomeController extends Controller
     function caEdit(Request $request) {
         $table = categories::where('name', $request->caName)->first();
 
-        // return response()->json([$getIdx=>$request->Cidx]);
         if ($table && $table->Cidx != $request->Cidx) {
             return response()->json(['exists']);
         } else {
@@ -309,17 +302,13 @@ class HomeController extends Controller
             'brandList' => $brandList
         ];
         return view('productRegister', $data);
-        // return $table;
     }
-
-    
 
     
     // 상품등록 post
     function productRegister(Request $request) {
         $inputs = $request->all();
-        
-
+    
         if ($request->state == 3) {
             $validator = Validator::make($inputs, [
                 'productName'=>'required',
@@ -348,18 +337,6 @@ class HomeController extends Controller
             $table->save();
             return response()->json(['success']);
         } else {
-            // $validator = Validator::make($inputs, [
-            //     'productName'=>'required',
-            //     'categories'=>'required',
-            //     'brand'=>'required',
-            //     'state'=>'required',
-            //     'price'=>'required',
-            //     'sales'=>'required',
-            // ]);
-            // if ($validator->fails()) {
-            //     return $validator->errors();
-            // }
-
             $validator = Validator::make($request->all(),[
                 'productName' => 'required',
                 'categories'=>'required',
@@ -529,36 +506,7 @@ class HomeController extends Controller
                 return response()->json(['success']);
             } else {
                 return response()->json(['No file']);
-            }
-
-
-            // if ($request->hasFile('productImg')) {
-            //     $doc_root = $_SERVER["DOCUMENT_ROOT"]; // Web서버 root directory
-            //     $dir=$doc_root.'\image';
-            //     $file_chk = $dir.'\\'.$productIdx.'.'.$getExtension;
-
-            //     if(file_exists($file_chk)){
-            //         File::delete($file_chk);
-            //         $file = $request->file('productImg');
-            //         return dd($file);
-            //         $extension = $request->file('productImg')->extension();
-            //         // $productIdx = $file_count + 1;
-            //         $imgName = $productIdx.'.'.$extension;
-            //         $file->move(\public_path('image'), $imgName);
-            //         return '파일 존재';
-            //     } else {
-            //         $count = products::all();
-            //         $count = $count->count() + 1;
-            //         $file = $request->file('productImg');
-            //         return dd($file);
-            //         $extension = $request->file('productImg')->extension();
-            //         $productIdx = $file_count + 1;
-            //         $imgName = $count.'.'.$extension;
-            //         $file->move(\public_path('image'), $imgName);
-            //     }
-            // } else {
-            //     return 'hasfile No';
-            // }    
+            } 
         }
     }
 
@@ -626,7 +574,6 @@ class HomeController extends Controller
             //         $output .='
             //     </ul>
             // </div>';
-        
         return response()->json([$output]);
     }
 

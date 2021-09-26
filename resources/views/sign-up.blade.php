@@ -138,22 +138,6 @@
             getToken();
             
             let postUrl = '/sign-up/post';
-                // let opts = {
-                //     method: 'POST',
-                //     body: `{
-                //         email: ${email},
-                //         name: ${name},
-                //         pw: ${pw}
-                //     }`,
-                //     headers: {
-                //         "X-CSRF-TOKEN" : _token,
-                //         "Content-Type": "application/json",
-                //         "Accept" : "application/json"
-                //     }
-                // };
-                // fetch('/sign-up/post',opts).then(function(response) {
-                //     console.log(response.json());
-                // });
                 // Ajax 요청
                 fetch("/sign-up/post", {
                     method: 'POST',

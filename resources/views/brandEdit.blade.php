@@ -81,7 +81,6 @@
                         return false;
                     }
                 }).catch(err => console.log(err));
-            
             }
         }
     </script>

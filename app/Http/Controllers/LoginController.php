@@ -29,16 +29,6 @@ class LoginController extends Controller
     }
 
     public function loginChk(Request $request) {
-        // $input = $request->all();
-        // $input['pw'] = bcrypt($input['pw']);
-        // $validator = Validator::make($input, [
-        //     'email'=>'required|email',
-        //     'pw'=>'required',
-        // ])->validate();
-        
-        // $auth = false;
-        // $errors = [];
-    
         $inputs = $request->all();
 
         //유효성 검사
@@ -46,7 +36,6 @@ class LoginController extends Controller
             'email'=>'required|email',
             'pw'=>'required',
         ]);
-        //->validateWithBag('post');
     
         //유효성 검사 실패 시 에러 메세지
         if ($validator->fails()) {
@@ -56,27 +45,14 @@ class LoginController extends Controller
             ]);
         }
         
-        // $json = response()->json(["email"=>"이메일이 존재하지 않습니다."]);
-        // $userdata = [
-        //     'email' => $request->input('email'),
-        //     'pw' => $request->input('pw'),
-        // ];
 
         // 아이디 비번 검사
         $table = MMonDB::where('email', $request->email)->first();
-        // $table = MMonDB::where('email', $request->email)->first();
         if(!$table) {
             return response()->json(["error" => "이메일이 존재하지 않습니다."]);
-        
         } else if(empty($request->email) || empty($request->pw)) {
             return response()->json(['error'=> '이메일 혹은 비밀번호가 빈 값입니다.']);
-            //return response()->json(["error" => $table]);
-  
-        } 
-        // else if(!\Hash::check($request->pw, $table->pw)) {
-        //     return response()->json(["error" => "이메일 혹은 비밀번호가 다릅니다."]);
-        // } 
-        else {
+        } else {
             if (\Hash::check($request->pw, $table->pw)) {
                 $request->session()->put('LoggedUser', $table->email);
                 $request->session()->put('LoggedName', $table->name);
@@ -123,7 +99,5 @@ class LoginController extends Controller
         //         'errors' => $errors
         //     ]);
         // }
-    
-        return redirect()->route('login');
     } 
 }

@@ -65,34 +65,23 @@
         console.log(decodedCookie1);
         // 쿠키 가져오기
         function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
 
-        var name = cname + "=";
-
-        var decodedCookie = decodeURIComponent(document.cookie);
-
-        var ca = decodedCookie.split(';');
-
-        for(var i = 0; i < ca.length; i++) {
-
-        var c = ca[i];
-        console.log(c);
-
-        while (c.charAt(0) == ' ') {
-
-            c = c.substring(1);
-            console.log(c);
-        }
-
-        if (c.indexOf(name) == 0) {
-            console.log(c.indexOf(name));
-            return c.substring(name.length, c.length);
-
-        }
-
-        }
-
-        return "";
-
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                console.log(c);
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    console.log(c);
+                }
+                if (c.indexOf(name) == 0) {
+                    console.log(c.indexOf(name));
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
         }
         var username = getCookie('email');
         console.log(username);
@@ -107,11 +96,6 @@
             let loginEmail = document.getElementById('login-email').value;
             let loginPw = document.getElementById('login-pw').value;
 
-
-
-
-            // let rememberEmailChk = rememberEmail.getAttribute("checked");
-            // console.log(rememberEmailChk);
             // 이메일 저장하기 체크
             if (rememberEmail.checked === true) {
                 console.log('checked');
@@ -150,32 +134,17 @@
             // meta에 있는 csrf토큰 값 가져오기
             function getToken(){
                 const metas = document.getElementsByTagName('meta');
-            
+    
                 for (let i = 0; i < metas.length; i++) {
-                if (metas[i].getAttribute('name') === metaName) {
-                    // return metas[i].getAttribute('content');
-                    token = metas[i].getAttribute('content');
-                }
+                    if (metas[i].getAttribute('name') === metaName) {
+                        // return metas[i].getAttribute('content');
+                        token = metas[i].getAttribute('content');
+                    }
                 }
             } 
 
             getToken();
 
-            // fetch('/login/post', {
-            //     method: 'POST',
-            //     credentials: 'include',
-            //     headers : {
-            //         'X-CSRF-TOKEN': token,
-            //         'Content-Type': 'application/json',
-            //         'Accept': 'application/json'
-            //     },
-            //     body: JSON.stringify({'email':loginEmail,'pw' : loginPw})
-            // }).then(response => console.log(response))
-            // .then((result) => {
-            //     console.log(result);
-            // });
-
-            //'Content-Type': 'application/json',
             // Ajax 요청
             fetch("/login/post", {
                 method: 'POST',

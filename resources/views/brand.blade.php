@@ -52,8 +52,6 @@
         let deleteBtn = document.getElementsByClassName('delete-btn');
         let token;
         let metaName = 'csrf-token';
-        console.log(deleteBtn);
-        // let brandName = document.getElementById('brand-name');
         for (let i = 0; i < deleteBtn.length; i++) {
             deleteBtn[i].onclick = function() {
                 let brandName = this.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
@@ -95,16 +93,5 @@
                 }
             }
         }
-        // deleteBtn.onclick = function() {
-        //     let brandName = this.parentNode.previousElementSibling.value;
-        //     if (confirm(`${brandName} 브랜드를 삭제하시겠습니까?`) == true) {
-        //         alert('삭제');
-        //     } else {
-        //         return false;
-        //     }
-        // }
-
-        
-
     </script>
 @endpush

@@ -92,7 +92,7 @@
                     } else if(res === '["exists"]') {
                         alert("중복된 카테고리명입니다.");
                     } else {
-                        return false;
+                        alert(response.error);
                     }
                 }).catch(err => console.log(err));
             }

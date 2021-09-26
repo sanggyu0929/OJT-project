@@ -16,14 +16,17 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->integer('Pidx')->autoIncrement();
             $table->string('name',45);
-            $table->integer('Bidx');
-            $table->integer('Cidx');
-            $table->integer('state');
+            $table->string('selectedBrand');
+            $table->string('selectedCategories');
+            $table->string('state');
             $table->integer('price');
             $table->integer('sales');
+            $table->string('extension',45);
+            $table->timestamp('created_at')->useCurrent();
+            $table->softDeletes('deleted_at',0);
 
-            $table->foreign('Bidx')->references('Bidx')->on('brands');
-            $table->foreign('Cidx')->references('Cidx')->on('categories');
+            // $table->foreign('Bidx')->references('Bidx')->on('brands');
+            // $table->foreign('Cidx')->references('Cidx')->on('categories');
         });
     }
 

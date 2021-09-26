@@ -18,6 +18,7 @@ class CreateBrandsTable extends Migration
             $table->string('Kname',45);
             $table->string('Ename',45);
             $table->string('phrase',80)->nullable();
+            $table->integer('total');
             $table->softDeletes('deleted_at',0);
         });
     }

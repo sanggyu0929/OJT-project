@@ -5,7 +5,7 @@
 @section('content')
     <section class="category-wrap">
         <h2>카테고리 페이지</h2>
-        <a href="{{ route('category.register') }}">카테고리 등록</a>
+        <a href="{{ route('category.register') }}" class="register-btn">카테고리 등록</a>
         <div class="category-box">
             <div class="category-box-top">
                 <span>카테고리</span>
@@ -34,7 +34,4 @@
         </div>
     
     </section>
-    
-    
-
 @endsection

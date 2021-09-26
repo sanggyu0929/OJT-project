@@ -25,7 +25,7 @@
         let token;
         let metaName = 'csrf-token';
         let Bidx = document.getElementById('brand-idx').value;
-        caIdx = parseInt(Bidx);
+        Bidx = parseInt(Bidx);
         console.log(Bidx);
 
         editBtn.onclick = function() {

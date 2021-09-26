@@ -25,6 +25,7 @@ use App\Http\Controllers\SignUpController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('product', [HomeController::class, 'goProduct'])->name('product');
 Route::get('product/Register', [HomeController::class, 'goProductRegister'])->name('product.register');
+Route::get('product/Edit/{Pidx}', [HomeController::class, 'goProductEdit'])->name('product.edit');
 Route::get('brand', [HomeController::class, 'goBrand'])->name('brand');
 Route::get('brand/Register', [HomeController::class, 'goBrandRegister'])->name('brand.register');
 Route::get('brand/Edit/{Bidx}', [HomeController::class, 'goBrandEdit'])->name('brand.edit');
@@ -44,6 +45,9 @@ Route::post('brand/Register', [HomeController::class, 'brandRegister']);
 Route::post('brand/Edit', [HomeController::class, 'brandEdit']);
 Route::post('brand/Delete', [HomeController::class, 'brandDelete']);
 Route::post('product/Register', [HomeController::class, 'productRegister'])->name('product.register');
+Route::post('product/Edit', [HomeController::class, 'productEdit'])->name('product.edit');
+Route::post('product/Delete', [HomeController::class, 'productDelete'])->name('product.delete');
+Route::post('product/search', [HomeController::class, 'productSearch'])->name('product.search');
 
 
 

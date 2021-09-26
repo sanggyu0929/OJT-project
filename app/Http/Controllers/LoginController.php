@@ -79,6 +79,7 @@ class LoginController extends Controller
         else {
             if (\Hash::check($request->pw, $table->pw)) {
                 $request->session()->put('LoggedUser', $table->email);
+                $request->session()->put('LoggedName', $table->name);
                 $response = new Response('Hello World');
                 $response->withCookie(cookie('email', $request->email, 5));
                 return response()->json(["success"]);

@@ -36,7 +36,7 @@
             } else {
                 useChk = '0';
             }
-            var blank_pattern = /^\s+|\s+$/g;
+            let blank_pattern = /^\s+|\s+$/g;
             if( caName.replace( blank_pattern, '' ) == "" ){
                 alert(' 공백만 입력되었습니다 ');
             } else {
